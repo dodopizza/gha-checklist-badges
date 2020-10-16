@@ -108,13 +108,14 @@ class ReadmeMD:
 
 def get_cli_args():
     parser = argparse.ArgumentParser(description='NFR')
+    parser.add_argument('--readme', type=str, required=True, help='Output readme file')
     parser.add_argument('fnames', type=str, nargs='+', help='Checklist files')
     args = parser.parse_args()
-    return args.fnames
+    return args.readme, args.fnames
 
 def main():
-    fnames = get_cli_args()
-    readme = ReadmeMD('README.md')
+    readme_fname, fnames = get_cli_args()
+    readme = ReadmeMD(readme_fname)
     for fname in fnames:
         checklist = Checklist(fname)
         mdname = checklist.get_name()

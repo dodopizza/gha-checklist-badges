@@ -1,6 +1,10 @@
 name: "NFR Badge"
 description: "Update readme.md with NFR badgets"
 inputs:
+  readme-fname:
+    description: "readme file"
+    default: "README.md"
+    required: true
   nfr-fnames:
     description: "nfr files separated by space"
     required: true
@@ -8,4 +12,8 @@ runs:
   using: "composite"
   steps:
       - shell: sh
-        run: ${{ github.action_path }}/nfr_badge/nfr_badge.sh ${{ inputs.nfr-fnames }}
+        run: echo ${{ inputs.readme-fname }}
+      - shell: sh
+        run: echo ${{ inputs.nfr-fnames }}
+      - shell: sh
+        run: ${{ github.action_path }}/nfr_badge/nfr_badge.sh --readme ${{ inputs.readme-fname }} ${{ inputs.nfr-fnames }}
