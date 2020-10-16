@@ -1,0 +1,42 @@
+# Example Checklist NFR
+
+- [ ] Security: check secrets/connection strings.
+- [ ] Check dependencies (security or private repository).
+- [ ] Files hierarchy and IDE support:
+  - [ ] Create solution file in the project root.
+  - [ ] Move project to src/ folder.
+  - [ ] Update .gitignore if needed.
+- [ ] Code:
+  - [ ] Check code (refactoring if needed).
+  - [ ] Check namespaces.
+  - [ ] Check language. All coments in code should be in English.
+- [ ] Change project name. Current name of the project does not reflect its purpose.
+- [ ] Introduce project style guide by adding .editorconfig.
+- [ ] Required GitHub files:
+  - [x] README.md - translate to English. Possibly update or rewrite. Make references for initial project.
+  - [x] LICENSE - MIT
+  - [ ] .github/CODE_OF_CONDUCT - just copy form <https://github.com/dodopizza/httpclient-resilience-policies/blob/master/.github/CODE_OF_CONDUCT.md>
+  - [ ] .github/CONTRIBUTING.md - could be build based on <https://github.com/dodopizza/httpclient-resilience-policies/blob/master/.github/CONTRIBUTING.md>
+  - [ ] .github/ISSUE_TEMPLATE - add issue templates [optional]
+- [ ] Project management:
+  - [x] Move all features/bugs/todos to Issues.
+  - [ ] Create Wiki if needed [optional]
+  - [x] Talk about PR policy.
+- [ ] Release management:
+  - [ ] Talk about release management on GitHub.
+  - [ ] SemVer and proper versioning and tagging.
+- [ ] CI/CD:
+  - [x] Possibly we could keep GitLab, but we need to think about CI for forks.
+  - [ ] Security check for CI/CD workflows.
+  - [ ] Branch rules (protect master branch).
+- [ ] Package distribution
+  - [ ] Prepare project for publish to NuGet.
+  - [ ] Create project on public NuGet as DodoPizza organization.
+- [ ] Move to Open Source:
+  - [ ] Double-check this checklist
+  - [ ] Make project public on GitHub.
+  - [ ] Make first release.
+  - [ ] Publish release to NuGet.
+  - [ ] Write your name to the Dodo Open Source History here: <https://app.nuclino.com/dodopizza/Development/-open-source-Dodo-26ba6965-499d-4ad8-9dbb-400e0108faba>
+  - [ ] Delete this TODO.
+  - [ ] Create post to #itnews.

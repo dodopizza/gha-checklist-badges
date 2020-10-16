@@ -1,0 +1,21 @@
+name: NFR documents changed
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "examples/*.md"
+jobs:
+  push:
+    name: NFR documents changed
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Update NFR badges
+        uses: dodopizza/gha-nfr-checklist-badges@${{ github.ref }}
+        with:
+          readme-fname: README.md
+          nfr-fnames: examples/Example-Checklist-NFR.md examples/Example-TODO.md
+          github_token: ${{ secrets.GITHUB_TOKEN }}
