@@ -26,7 +26,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Update NFR badges
-        uses: dodopizza/gha-nfr-checklist-badges@main
+        uses: dodopizza/gha-checklist-badges@main
         with:
           readme-fname: README.md
           nfr-fnames: ChecklistFileOne.md ChecklistFileTwo.md
