@@ -80,7 +80,7 @@ class Badge:
         if len(finded) > 0:
             return result
         else:
-            return "![%s](%s) " % (badge_name, new_badge_url) + content
+            return "![%s](%s) \n" % (badge_name, new_badge_url) + content
 
 
 class ReadmeMD:
@@ -94,6 +94,7 @@ class ReadmeMD:
 
     def write_content(self, content: str):
         ReadmeMD.write_file_content(self.fname, content)
+        self.content=content
 
     @staticmethod
     def get_file_content(fname: str) -> str:
