@@ -2,4 +2,5 @@
 
 DIR=$(cd $(dirname $0); pwd)
 export PYTHONPATH="${DIR}/src:${PYTHONPATH}"
-python3.8 -m nfr_badge "$@"
+>&2 python3 --version
+python3 -m nfr_badge "$@"
