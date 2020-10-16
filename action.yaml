@@ -1,5 +1,5 @@
-name: "NFR Badge"
-description: "Update readme.md with NFR badgets"
+name: "Checklist Progress Badge"
+description: "Update readme file with badges generated from repos checklists"
 branding:
   icon: "check-square"
   color: "green"
@@ -9,7 +9,7 @@ inputs:
     default: "README.md"
     required: true
   nfr-fnames:
-    description: "NFR files separated by space"
+    description: "Checklist files separated by space"
     required: true
   github_token:
     description: 'Token for the repo. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}. If passed readme file will be updated.'
