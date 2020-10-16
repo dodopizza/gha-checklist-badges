@@ -1,7 +1,8 @@
 name: "NFR Badge"
 description: "Update readme.md with NFR badgets"
-icon: "check-square"
-color: "green"
+branding:
+  icon: "check-square"
+  color: "green"
 inputs:
   readme-fname:
     description: "Readme file"
