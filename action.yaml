@@ -8,4 +8,4 @@ runs:
   using: "composite"
   steps:
       - shell: sh
-        run: ./nfr_badge/nfr_badge.sh ${{ inputs.nfr-fnames }}
+        run: ${{ github.action_path }}/nfr_badge/nfr_badge.sh ${{ inputs.nfr-fnames }}
