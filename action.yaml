@@ -2,20 +2,27 @@ name: "NFR Badge"
 description: "Update readme.md with NFR badgets"
 inputs:
   readme-fname:
-    description: "readme file"
+    description: "Readme file"
     default: "README.md"
     required: true
   nfr-fnames:
-    description: "nfr files separated by space"
+    description: "NFR files separated by space"
+    required: true
+  commit-updated-readme:
+    default: "false"
+    description: "Commit and push to repo updated readme file"
     required: true
 runs:
   using: "composite"
   steps:
       - shell: sh
-        run: echo ${{ inputs.readme-fname }}
-      - shell: sh
-        run: echo ${{ inputs.nfr-fnames }}
-      - shell: sh
-        run: echo ${{ github.action_path }}/nfr_badge/nfr_badge.sh --readme ${{ inputs.readme-fname }} ${{ inputs.nfr-fnames }}
-      - shell: sh
         run: ${{ github.action_path }}/nfr_badge/nfr_badge.sh --readme ${{ inputs.readme-fname }} ${{ inputs.nfr-fnames }}
+      - shell: sh
+        run: |
+          [ "${{ inputs.commit-updated-readme }}" == "true" ] && echo "Skip updating repo" && exit 0
+          remote_repo="https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git"
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          ( git add ${{ inputs.readme-fname }} \
+            && git commit -m "[NFR Action]" \
+            && git push "${remote_repo}" HEAD:${{ github.ref }} ) || true
