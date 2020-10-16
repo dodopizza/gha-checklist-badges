@@ -19,7 +19,7 @@ runs:
         run: ${{ github.action_path }}/nfr_badge/nfr_badge.sh --readme ${{ inputs.readme-fname }} ${{ inputs.nfr-fnames }}
       - shell: sh
         run: |
-          [ -z "${{ inputs.github_token }}" == "true" ] && echo "Skip updating repo" && exit 0
+          [ -z '${{ inputs.github_token }}' == 'true' ] && echo 'Skip updating repo' && exit 0
           remote_repo="https://${GITHUB_ACTOR}:${{ inputs.github_token }}@github.com/${GITHUB_REPOSITORY}.git"
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
