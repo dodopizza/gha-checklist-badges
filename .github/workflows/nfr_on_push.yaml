@@ -2,8 +2,8 @@ name: NFR documents changed
 on:
   workflow_dispatch:
   push:
-    paths:
-      - "examples/*.md"
+    # paths:
+    #   - "examples/*.md"
 jobs:
   push:
     name: NFR documents changed
