@@ -8,9 +8,9 @@ inputs:
   nfr-fnames:
     description: "NFR files separated by space"
     required: true
-  commit-updated-readme:
-    default: "false"
-    description: "Commit and push to repo updated readme file"
+  github_token:
+    description: 'Token for the repo. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}. If passed readme file will be updated.'
+    default: ""
     required: true
 runs:
   using: "composite"
@@ -19,8 +19,8 @@ runs:
         run: ${{ github.action_path }}/nfr_badge/nfr_badge.sh --readme ${{ inputs.readme-fname }} ${{ inputs.nfr-fnames }}
       - shell: sh
         run: |
-          [ "${{ inputs.commit-updated-readme }}" == "true" ] && echo "Skip updating repo" && exit 0
-          remote_repo="https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git"
+          [ -z "${{ inputs.github_token }}" == "true" ] && echo "Skip updating repo" && exit 0
+          remote_repo="https://${GITHUB_ACTOR}:${{ inputs.github_token }}@github.com/${GITHUB_REPOSITORY}.git"
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           ( git add ${{ inputs.readme-fname }} \
